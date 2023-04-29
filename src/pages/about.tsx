@@ -9,7 +9,7 @@ export default function About() {
                 <h1 className="text-4xl font-bold">About</h1>
                 <div className="text-2xl">
                     <p>
-                        Random Chaos is a collection of utilities for
+                        random-abcs is a collection of utilities for
                         generating random numbers, colors, names, countries, text, and more.
                     </p>
                 </div>

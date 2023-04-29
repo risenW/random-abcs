@@ -9,6 +9,7 @@ const Suggest = () => {
                         src="https://docs.google.com/forms/d/e/1FAIpQLSf1lwkCoUAkUSY0e_U74Ma5R-1pJusBcoXwsY1mThCTcnzGZw/viewform?embedded=true"
                         width="722"
                         height="753"
+                        // @ts-ignore // eslint-disable-next-line
                         frameborder="0"
                         marginheight="0"
                         marginwidth="0"
