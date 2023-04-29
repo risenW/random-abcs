@@ -48,25 +48,28 @@ export default function RandomCountries(props: RandomCountriesProps) {
                             min={1}
                             max={countries.length}
                             placeholder='1'
+                            className='w-full'
                         />
                     </Form.Item>
 
                     <DisplayCountries countries={randomCountries} />
 
-                    <div className='flex'>
+                    <div className='flex justify-center mt-4 gap-2'>
                         <Button
+                            size='large'
                             type="primary"
                             htmlType="submit"
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full flex-1'
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  '
                         >
                             Generate
                         </Button>
                         <Button
+                            size='large'
                             type="ghost"
                             onClick={handleCopy}
                             className='text-black hover:bg-gray-100 font-bold'
                         >
-                            <CopyOutlined />
+                            Copy to Clipboard <CopyOutlined />
                         </Button>
                     </div>
                 </Form>
