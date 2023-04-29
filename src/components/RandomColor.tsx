@@ -65,20 +65,21 @@ export default function RandomColor(props: RandomColorProps) {
                 <div className='flex justify-center space-x-16 my-10'>
                     {renderColor(hexColor)}
                 </div>
-                <div className='flex'>
+                <div className='flex justify-center mt-4 gap-2'>
                     <Button
-                        type="primary"
+                        size='large'
                         onClick={handleGenerateRandomColor}
-                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full'
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  '
                     >
                         Generate
                     </Button>
                     <Button
+                        size='large'
                         type="ghost"
                         onClick={handleCopy}
                         className='text-black hover:bg-gray-100 font-bold'
                     >
-                        <CopyOutlined />
+                        Copy to Clipboard <CopyOutlined />
                     </Button>
                 </div>
             </Card>

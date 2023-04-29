@@ -48,35 +48,36 @@ export default function RandomNumber(props: RandomNumberProps) {
                     name="random-number"
                     initialValues={{ remember: true }}
                     onFinish={handleGenerateRandomNumber}
-                    labelAlign='left'
                 >
                     <Form.Item
-                        label="Min"
+                        label="Minimum Value"
                         name="min"
                     >
-                        <InputNumber />
+                        <InputNumber className='w-full' />
                     </Form.Item>
 
                     <Form.Item
-                        label="Max"
+                        label="Maximum Value"
                         name="max"
                     >
-                        <InputNumber />
+                        <InputNumber className='w-full' />
                     </Form.Item>
-                    <div className='flex'>
+                    <div className='flex justify-center mt-4 gap-2'>
                         <Button
+                            size='large'
                             type="primary"
                             htmlType="submit"
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full flex-1'
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  '
                         >
                             Generate
                         </Button>
                         <Button
+                            size='large'
                             type="ghost"
                             onClick={handleCopy}
                             className='text-black hover:bg-gray-100 font-bold'
                         >
-                            <CopyOutlined />
+                            Copy to Clipboard <CopyOutlined />
                         </Button>
                     </div>
                 </Form>

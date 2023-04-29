@@ -43,24 +43,25 @@ export default function ThrowDice(props: ThrowDiceProps) {
                 className='shadow-lg border-2 border-gray-200'
             >
                 <div className='flex justify-center space-x-16 my-10'>
-                    <Statistic title="Die 1" value={diceValues.dice1} />
-                    <Statistic title="Die 2" value={diceValues.dice2} />
+                    <Statistic title="Dice 1" value={diceValues.dice1} />
+                    <Statistic title="Dice 2" value={diceValues.dice2} />
                 </div>
 
-                <div className='flex'>
+                <div className='flex justify-center mt-4 gap-2'>
                     <Button
-                        type="primary"
+                        size='large'
                         onClick={handleThrowDice}
-                        className='flex-1 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full'
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded'
                     >
-                        Generate
+                        Throw Dice
                     </Button>
                     <Button
+                        size='large'
                         type="ghost"
                         onClick={handleCopy}
                         className='text-black hover:bg-gray-100 font-bold'
                     >
-                        <CopyOutlined />
+                        Copy to Clipboard <CopyOutlined />
                     </Button>
                 </div>
             </Card>

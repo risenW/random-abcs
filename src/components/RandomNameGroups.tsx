@@ -97,25 +97,27 @@ export default function RandomNameGroups(props: RandomNameGroupsProps) {
                             min={1}
                             placeholder='2'
                             className='w-full'
-                            
+
                         />
                     </Form.Item>
 
                     <DisplayGroups groups={groups} />
-                    <div className='flex'>
+                    <div className='flex justify-center mt-4 gap-2'>
                         <Button
+                            size='large'
                             type="primary"
                             htmlType="submit"
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full'
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  '
                         >
                             Generate
                         </Button>
                         <Button
+                            size='large'
                             type="ghost"
                             onClick={handleCopy}
                             className='text-black hover:bg-gray-100 font-bold'
                         >
-                            <CopyOutlined />
+                            Copy to Clipboard <CopyOutlined />
                         </Button>
                     </div>
 
