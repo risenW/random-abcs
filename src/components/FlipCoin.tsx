@@ -14,10 +14,8 @@ interface FlipCoinProps {
 }
 
 export default function FlipCoin(props: FlipCoinProps) {
-    const { showSuccessMessage } = props;
-
     const [coinSide, setCoinSide] = useState('Heads');
-    const [isSpinning, setIsSpinning] = useState(true);
+    const [isSpinning, setIsSpinning] = useState(false);
 
 
     const handleFlipCoin = () => {
@@ -26,7 +24,7 @@ export default function FlipCoin(props: FlipCoinProps) {
         setTimeout(() => {
             setIsSpinning(false);
             flipCoin();
-        }, 4000);
+        }, 2000);
     }
 
     const flipCoin = () => {

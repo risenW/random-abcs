@@ -20,8 +20,17 @@ export default function ThrowDice(props: ThrowDiceProps) {
         "dice1": 0,
         "dice2": 0,
     })
+    const [isSpinning, setIsSpinning] = useState(false);
 
     const handleThrowDice = () => {
+        setIsSpinning(true);
+        setTimeout(() => {
+            setIsSpinning(false);
+            throwDice();
+        }, 2000);
+    }
+
+    const throwDice = () => {
         const dice1 = Math.floor(Math.random() * 6) + 1;
         const dice2 = Math.floor(Math.random() * 6) + 1;
         setDiceValues({
@@ -42,9 +51,27 @@ export default function ThrowDice(props: ThrowDiceProps) {
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
-                <div className='flex justify-center space-x-16 my-10'>
-                    <Statistic title="Dice 1" value={diceValues.dice1} />
-                    <Statistic title="Dice 2" value={diceValues.dice2} />
+                <div className='flex justify-center'>
+                    <p>
+                        {
+                            isSpinning && <img src='/dicespin.gif' alt='Coin'
+                                style={{
+                                    width: '300px',
+                                    height: '200px',
+                                }}
+                            />
+                        }
+                    </p>
+
+                    {
+                        !isSpinning && (
+                            <div className='flex justify-center space-x-16 my-10'>
+                                <Statistic title="Dice 1" value={diceValues.dice1} />
+                                <Statistic title="Dice 2" value={diceValues.dice2} />
+                            </div>
+                        )
+                    }
+
                 </div>
 
                 <div className='flex justify-center mt-4 gap-2'>
@@ -64,6 +91,7 @@ export default function ThrowDice(props: ThrowDiceProps) {
                         Copy to Clipboard <CopyOutlined />
                     </Button>
                 </div>
+
             </Card>
         </div>
     )
