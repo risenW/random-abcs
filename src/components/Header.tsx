@@ -29,7 +29,9 @@ export default function Header() {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <Link href="/suggest-a-feature" className="text-sm font-semibold leading-6 text-gray-900">
+                    <Link href="https://forms.gle/DkPNQwgvWS1Ffxct5" className="text-sm font-semibold leading-6 text-gray-900"
+                        target='_blank'
+                    >
                         Suggest a feature
                     </Link>
                     {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -65,7 +67,8 @@ export default function Header() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <Link href="/suggest-a-feature"
+                                <Link href="https://forms.gle/DkPNQwgvWS1Ffxct5"
+                                    target='_blank'
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Suggest a feature

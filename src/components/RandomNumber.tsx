@@ -39,9 +39,6 @@ export default function RandomNumber(props: RandomNumberProps) {
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
-                <p>
-                    Generate a Random Number
-                </p>
                 <Statistic
                     value={randomNumber}
                     className='mb-10 '

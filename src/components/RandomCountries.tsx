@@ -59,7 +59,7 @@ export default function RandomCountries(props: RandomCountriesProps) {
                             htmlType="submit"
                             className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded  w-full flex-1'
                         >
-                            Generate Country Name(s)
+                            Generate
                         </Button>
                         <Button
                             type="ghost"

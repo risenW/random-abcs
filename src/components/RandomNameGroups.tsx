@@ -65,7 +65,7 @@ export default function RandomNameGroups(props: RandomNameGroupsProps) {
     };
 
     return (
-        <div className='text-center mt-2 max-w-prose mx-auto'>
+        <div className='text-center mt-2'>
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
@@ -75,6 +75,9 @@ export default function RandomNameGroups(props: RandomNameGroupsProps) {
                     onFinish={handleGroupGenerator}
                     autoComplete="off"
                     className='w-full'
+                    labelCol={{ span: 8 }}
+                    labelAlign='left'
+                    layout='vertical'
                 >
                     <Form.Item
                         label="Items"
@@ -93,6 +96,8 @@ export default function RandomNameGroups(props: RandomNameGroupsProps) {
                         <InputNumber
                             min={1}
                             placeholder='2'
+                            className='w-full'
+                            
                         />
                     </Form.Item>
 

@@ -62,9 +62,6 @@ export default function RandomColor(props: RandomColorProps) {
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
-                <p>
-                    Random Color Generator
-                </p>
                 <div className='flex justify-center space-x-16 my-10'>
                     {renderColor(hexColor)}
                 </div>

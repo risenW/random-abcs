@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import LeftSideBar from "./LeftSideBar";
-import RightSideBar from "./RightSideBar";
+// import LeftSideBar from "./LeftSideBar";
+// import RightSideBar from "./RightSideBar";
 import Head from 'next/head';
 
 interface IProps {
@@ -18,16 +18,17 @@ const BaseLayout = (props: IProps) => {
             </Head>
 
             <Header />
-            <div className="flex">
-                <div className="p-10">
+            <hr className="mb-10" />
+            <div className="lg:px-28 px-5">
+                {/* <div className="p-10">
                     <LeftSideBar />
-                </div>
-                <div className="flex-1">
+                </div> */}
+                <div className="">
                     {children}
                 </div>
-                <div className="p-10">
+                {/* <div className="p-10">
                     <RightSideBar />
-                </div>
+                </div> */}
             </div>
 
             <Footer />

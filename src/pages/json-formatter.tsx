@@ -73,20 +73,16 @@ export default function JSONFormatter() {
 
     return (
         <BaseLayout title="JSON Formatter">
-            <div className="p-4 ">
-                <h1 className="text-4xl mb-4">JSON Formatter</h1>
+            <div>
+                <h1 className="text-2xl mb-4 text-center">JSON Formatter</h1>
                 <hr className="mb-4" />
                 {showError &&
                     <p className="text-red-500 my-5">
                         {errorText}
                     </p>
                 }
-                <div className='grid grid-cols-5 overflow-scroll'
-                    style={{
-                        maxHeight: '600px',
-                    }}
-                >
-                    <Card className='shadow-sm border-2 border-gray-200 col-span-2'>
+                <div className='grid gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
+                    <Card className='shadow-sm border-2 border-gray-200 lg:col-span-2'>
                         <div>
                             <h2 className="text-2xl mb-4">Raw JSON</h2>
                             <hr className='mb-4' />
@@ -101,7 +97,7 @@ export default function JSONFormatter() {
                         />
                     </Card>
 
-                    <div className="text-center">
+                    <div className="flex flex-col">
                         <h2 className="text-lg mt-10 font-semibold">Display Settings</h2>
                         <Checkbox.Group
                             className="flex-col items-baseline mt-5"
@@ -126,7 +122,7 @@ export default function JSONFormatter() {
                         </Button>
                     </div>
 
-                    <div className="col-span-2 overflow-scroll">
+                    <div className="lg:col-span-2 overflow-scroll">
                         {jsonOutput &&
                             <Card className='shadow-lg border-2 border-gray-200' >
                                 <div>

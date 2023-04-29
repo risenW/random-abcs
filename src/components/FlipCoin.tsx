@@ -34,9 +34,6 @@ export default function FlipCoin(props: FlipCoinProps) {
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
-                <p>
-                    Flip a coin
-                </p>
                 <div className='flex justify-center space-x-16 my-10'>
                     <Statistic value={coinSide} />
                 </div>

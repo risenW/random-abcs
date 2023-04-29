@@ -42,9 +42,6 @@ export default function ThrowDice(props: ThrowDiceProps) {
             <Card
                 className='shadow-lg border-2 border-gray-200'
             >
-                <p>
-                    Roll two dice
-                </p>
                 <div className='flex justify-center space-x-16 my-10'>
                     <Statistic title="Die 1" value={diceValues.dice1} />
                     <Statistic title="Die 2" value={diceValues.dice2} />
