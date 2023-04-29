@@ -7,10 +7,17 @@ export default function About() {
         >
             <div className="flex flex-col">
                 <h1 className="text-2xl font-bold">About</h1>
-                <p>
-                    random-abcs is a collection of utilities for
-                    generating random numbers, colors, names, countries, text, and more.
+                <p className="mt-2">
+                    Random-ABCs is a collection of:
                 </p>
+                <div className="ml-2">
+                    <p>
+                        - Random generators numbers, colors, names, countries, texts, groups,
+                    </p>
+                    <p>
+                        - Utilities for loading, parsing, and manipulating data structures, e.g. JSON-to-CSV, CSV-to-JSON, etc.
+                    </p>
+                </div>
             </div>
         </BaseLayout>
     );
