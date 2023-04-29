@@ -12,7 +12,7 @@ export default function Home() {
     <BaseLayout title='Random - ABCs - Generate random numbers, colors, names, countries, and more'>
       <div className=''>
         <h1 className='text-xl font-bold mb-5'>Random Generators</h1>
-        <div className='grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+        <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <Link href={"/random-group"} >
             <Card
               hoverable
@@ -121,7 +121,7 @@ export default function Home() {
         <hr className='my-10' />
         <div>
           <h1 className='text-xl font-bold mb-5 mt-10'>Utilities</h1>
-          <div className='grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             <Link href={"/json-formatter"}>
               <Card
                 hoverable

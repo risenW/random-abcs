@@ -12,14 +12,14 @@ interface IProps {
 const BaseLayout = (props: IProps) => {
     const { children, title } = props;
     return (
-        <div className="">
+        <div className="flex flex-col min-h-screen">
             <Head>
                 <title>{title}</title>
             </Head>
 
             <Header />
             <hr className="mb-10" />
-            <div className="lg:px-28 px-5">
+            <div className="lg:px-28 px-5 mb-auto">
                 {/* <div className="p-10">
                     <LeftSideBar />
                 </div> */}
