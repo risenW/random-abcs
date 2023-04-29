@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import BaseLayout from '../components/Layout';
 import { Card } from 'antd';
@@ -15,11 +16,10 @@ export default function Home() {
           <Link href={"/random-group"} >
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/random-grp.svg"
-                width={200}
-                height={200}
                 alt='Random Group'
+                style={{ height: 200 }}
               />
               }
               className='cursor-pointer'
@@ -34,11 +34,10 @@ export default function Home() {
           <Link href={"/random-number"}>
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/random-num.svg"
-                width={200}
-                height={200}
                 alt='Random Number'
+                style={{ height: 200 }}
               />
               }
               className='cursor-pointer'
@@ -52,11 +51,10 @@ export default function Home() {
           <Link href={"/throw-dice"}>
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/dices.svg"
-                width={200}
-                height={200}
                 alt='Throw Dice'
+                style={{ height: 200 }}
               />
               }
               className='cursor-pointer'
@@ -70,11 +68,10 @@ export default function Home() {
           <Link href={"/random-color"}>
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/random-color.svg"
-                width={200}
-                height={200}
                 alt='Random Color'
+                style={{ height: 200 }}
               />
               }
               className='cursor-pointer'
@@ -88,11 +85,10 @@ export default function Home() {
           <Link href={"/flip-coin"}>
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/coin.svg"
-                width={200}
-                height={200}
                 alt='Flip Coin'
+                style={{ height: 200 }}
               />
               }
               className='cursor-pointer'
@@ -106,11 +102,10 @@ export default function Home() {
           <Link href={"/random-countries"}>
             <Card
               hoverable
-              cover={<Image
+              cover={<img
                 src="/country.svg"
-                width={200}
-                height={200}
                 alt='Random Countries'
+                style={{ height: 200, width: 260 }}
               />
               }
               className='cursor-pointer'
@@ -130,11 +125,10 @@ export default function Home() {
             <Link href={"/json-formatter"}>
               <Card
                 hoverable
-                cover={<Image
+                cover={<img
                   src="/json-file.svg"
-                  width={200}
-                  height={200}
                   alt='JSON Formatter'
+                  style={{ height: 200 }}
                 />
                 }
                 className='cursor-pointer'
@@ -166,10 +160,9 @@ export default function Home() {
             <Link href={"/csv-to-json"}>
               <Card
                 hoverable
-                cover={<Image
+                cover={<img
                   src="/csvtojson.png"
-                  width={200}
-                  height={200}
+                  style={{ height: 200 }}
                   alt='CSV to JSON'
                 />
                 }
