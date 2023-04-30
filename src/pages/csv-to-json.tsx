@@ -118,7 +118,6 @@ export default function CSVToJSON() {
                 setJsonOutput(inputAsjson);
                 setCsvInDataframe(df);
             }).catch((err: any) => {
-                console.log(err);
                 setErrorText("Error loading CSV. Please check your file.");
                 setShowError(true);
             })
@@ -138,7 +137,6 @@ export default function CSVToJSON() {
                 setCsvInDataframe(df);
             })
             .catch((err: any) => {
-                console.log(err);
                 setErrorText("Error loading CSV. Please check your URL. Make sure it is publicly accessible.");
                 setShowError(true);
                 setLoadingCSV(false);
