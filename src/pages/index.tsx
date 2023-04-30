@@ -139,14 +139,13 @@ export default function Home() {
                 />
               </Card>
             </Link>
-            {/* <Link href={"/json-to-csv"}>
+            <Link href={"/json-to-csv"}>
               <Card
                 hoverable
-                cover={<Image
+                cover={<img
                   src="/jsontocsv.png"
-                  width={200}
-                  height={200}
                   alt='JSON to CSV'
+                  style={{ height: 200, width: 260 }}
                 />
                 }
                 className='cursor-pointer'
@@ -156,13 +155,13 @@ export default function Home() {
                   description="Load, parse and convert JSON data to CSV format."
                 />
               </Card>
-            </Link> */}
+            </Link>
             <Link href={"/csv-to-json"}>
               <Card
                 hoverable
                 cover={<img
                   src="/csvtojson.png"
-                  style={{ height: 200 }}
+                  style={{ height: 200, width: 260 }}
                   alt='CSV to JSON'
                 />
                 }
