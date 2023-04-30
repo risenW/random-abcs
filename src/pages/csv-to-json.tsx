@@ -25,7 +25,7 @@ export default function CSVToJSON() {
     const [jsonOutput, setJsonOutput] = useState(null);
     const [showError, setShowError] = useState(false);
     const [errorText, setErrorText] = useState("Invalid CSV. Please check your input.");
-    const [fullScreen, setFullScreen] = useState(true);
+    const [fullScreen, setFullScreen] = useState(false);
 
     const [loadingCSV, setLoadingCSV] = useState(false);
     const [csvUrl, setCsvUrl] = useState("");
