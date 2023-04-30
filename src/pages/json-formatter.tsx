@@ -9,6 +9,10 @@ import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import dynamic from 'next/dynamic';
 import BaseLayout from '@/components/Layout';
 import { jsonrepair } from 'jsonrepair'
+import {
+    ExpandOutlined,
+    CloseOutlined,
+} from '@ant-design/icons';
 
 const ReactJson = dynamic(
     () => import('react-json-view'),
@@ -20,6 +24,7 @@ export default function JSONFormatter() {
     const [jsonOutput, setJsonOutput] = useState(null);
     const [showError, setShowError] = useState(false);
     const [errorText, setErrorText] = useState("Invalid JSON. Please check your input.");
+    const [fullScreen, setFullScreen] = useState(false);
 
     const [displaySettings, setDisplaySettings] = useState<any>({
         collapsed: false,
@@ -69,6 +74,15 @@ export default function JSONFormatter() {
             newDisplaySettings[key] = value.includes(key);
         });
         setDisplaySettings(newDisplaySettings);
+    }
+
+    const downloadJSON = () => {
+        const element = document.createElement("a");
+        const file = new Blob([JSON.stringify(jsonOutput)], { type: 'text/plain' });
+        element.href = URL.createObjectURL(file);
+        element.download = `formatted-json-${Date.now()}.json`
+        document.body.appendChild(element); // Required for this to work in FireFox
+        element.click();
     }
 
     return (
@@ -122,33 +136,47 @@ export default function JSONFormatter() {
                         </Button>
                     </div>
 
-                    <div className="lg:col-span-2 overflow-scroll">
-                        {jsonOutput &&
-                            <Card className='shadow-lg border-2 border-gray-200' >
+                    <div
+                        className={`w-full col-span-2 ${fullScreen ? 'fixed top-0 left-0 w-full h-full bg-white z-50 p-10' : ''}`}
+                    >
+                        <Card className='shadow-lg border-2 border-gray-200' >
+                            <div className='flex justify-between'>
+                                <h2 className="text-2xl mb-4">Formatted JSON</h2>
                                 <div>
-                                    <h2 className="text-2xl mb-4">Formatted JSON</h2>
-                                    <hr className='mb-4' />
+                                    <Button
+                                        type="default"
+                                        className='text-gray-500 hover:bg-gray-100 font-bold'
+                                        onClick={downloadJSON}
+                                    >
+                                        Download
+                                    </Button>
+                                    <Button
+                                        type="default"
+                                        className='text-gray-500 hover:bg-gray-100 font-bold ml-2'
+                                        onClick={() => setFullScreen(!fullScreen)}
+                                        icon={fullScreen ? <CloseOutlined /> : <ExpandOutlined />}
+                                    />
                                 </div>
+                            </div>
+                            <hr className='mb-4' />
+                            <ReactJson
+                                src={jsonOutput || {}}
+                                collapsed={displaySettings.collapsed}
+                                enableClipboard={displaySettings.enableClipboard}
+                                displayObjectSize={displaySettings.displayObjectSize}
+                                displayDataTypes={displaySettings.displayDataTypes}
+                                sortKeys={displaySettings.sortKeys}
+                                quotesOnKeys={displaySettings.quotesOnKeys}
+                                collapseStringsAfterLength={displaySettings.collapseStringsAfterLength}
+                                style={{
+                                    overflow: 'scroll',
+                                    maxHeight: '600px',
+                                }}
+                                iconStyle='triangle'
+                                name={false}
+                            />
 
-                                <ReactJson
-                                    src={jsonOutput}
-                                    collapsed={displaySettings.collapsed}
-                                    enableClipboard={displaySettings.enableClipboard}
-                                    displayObjectSize={displaySettings.displayObjectSize}
-                                    displayDataTypes={displaySettings.displayDataTypes}
-                                    sortKeys={displaySettings.sortKeys}
-                                    quotesOnKeys={displaySettings.quotesOnKeys}
-                                    collapseStringsAfterLength={displaySettings.collapseStringsAfterLength}
-                                    style={{
-                                        overflow: 'scroll',
-                                        maxHeight: '600px',
-                                    }}
-                                    iconStyle='triangle'
-                                    name={false}
-                                />
-
-                            </Card>
-                        }
+                        </Card>
                     </div>
                 </div>
             </div>
