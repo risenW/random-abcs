@@ -8,6 +8,10 @@ import {
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import dynamic from 'next/dynamic';
 import BaseLayout from '@/components/Layout';
+import {
+    ExpandOutlined,
+    CloseOutlined,
+} from '@ant-design/icons';
 
 import * as dfd from "danfojs";
 
@@ -21,6 +25,7 @@ export default function CSVToJSON() {
     const [jsonOutput, setJsonOutput] = useState(null);
     const [showError, setShowError] = useState(false);
     const [errorText, setErrorText] = useState("Invalid CSV. Please check your input.");
+    const [fullScreen, setFullScreen] = useState(true);
 
     const [loadingCSV, setLoadingCSV] = useState(false);
     const [csvUrl, setCsvUrl] = useState("");
@@ -159,79 +164,86 @@ export default function CSVToJSON() {
                     </p>
                 }
                 <div className='grid gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
-                    <Card className='shadow-sm border-2 border-gray-200 col-span-2'>
-                        <div>
-                            <div className='flex-col'>
-                                <h2 className="text-2xl mb-4">CSV</h2>
-                                <div>
-                                    <input
-                                        type="file"
-                                        accept=".csv"
-                                        onChange={handleCSVFileUpload}
-                                        className='mb-6'
-                                        multiple={false}
-                                        value={selectedCSVFile}
+                    {
+                        !fullScreen && (
+                            <>
+                                <Card className='shadow-sm border-2 border-gray-200 col-span-2'>
+                                    <div>
+                                        <div className='flex-col'>
+                                            <h2 className="text-2xl mb-4">CSV</h2>
+                                            <div>
+                                                <input
+                                                    type="file"
+                                                    accept=".csv"
+                                                    onChange={handleCSVFileUpload}
+                                                    className='mb-6'
+                                                    multiple={false}
+                                                    value={selectedCSVFile}
 
+                                                />
+                                            </div>
+                                            <div className='flex'>
+                                                <Input
+                                                    placeholder="Load a CSV from a URL"
+                                                    className='mb-4'
+                                                    value={csvUrl}
+                                                    onChange={(e) => setCsvUrl(e.target.value)}
+                                                />
+                                                <Button
+                                                    type="default"
+                                                    className='text-gray-500 hover:bg-gray-100 font-bold ml-4'
+                                                    onClick={handleLoadCSVFromURL}
+                                                    loading={loadingCSV}
+                                                >
+                                                    Load
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        <hr className='mb-4' />
+                                    </div>
+                                    <Input.TextArea
+                                        rows={25}
+                                        value={csvInput}
+                                        onChange={handleCSVChange}
+                                        placeholder="Or paste raw CSV here..."
+                                        className='pt-4'
+                                        bordered={false}
                                     />
-                                </div>
-                                <div className='flex'>
-                                    <Input
-                                        placeholder="Load a CSV from a URL"
-                                        className='mb-4'
-                                        value={csvUrl}
-                                        onChange={(e) => setCsvUrl(e.target.value)}
+                                </Card>
+
+                                <div className="text-center flex-col">
+                                    <h2 className="text-lg mt-10 font-semibold">Display Settings</h2>
+                                    <Checkbox.Group
+                                        className="flex-col items-baseline mt-5"
+                                        onChange={handleDisplaySettingsChange}
+                                        value={Object.keys(displaySettings).filter(key => displaySettings[key])}
+                                        options={[
+                                            { label: 'Collapsed', value: 'collapsed' },
+                                            { label: 'Enable Copy', value: 'enableClipboard' },
+                                            { label: 'Display Object Size', value: 'displayObjectSize' },
+                                            { label: 'Display Data Types', value: 'displayDataTypes' },
+                                            { label: 'Sort Keys', value: 'sortKeys' },
+                                            { label: 'Quotes on Keys', value: 'quotesOnKeys' },
+                                        ]}
                                     />
                                     <Button
-                                        type="default"
-                                        className='text-gray-500 hover:bg-gray-100 font-bold ml-4'
-                                        onClick={handleLoadCSVFromURL}
-                                        loading={loadingCSV}
+                                        type="primary"
+                                        onClick={convertcsvStringToJSON}
+                                        className='text-white hover:bg-gray-100 font-bold mt-4 bg-blue-600'
                                     >
-                                        Load
+                                        Convert to JSON
                                     </Button>
                                 </div>
-                            </div>
-                            <hr className='mb-4' />
-                        </div>
-                        <Input.TextArea
-                            rows={25}
-                            value={csvInput}
-                            onChange={handleCSVChange}
-                            placeholder="Or paste raw CSV here..."
-                            className='pt-4'
-                            bordered={false}
-                        />
-                    </Card>
-
-                    <div className="text-center flex-col">
-                        <h2 className="text-lg mt-10 font-semibold">Display Settings</h2>
-                        <Checkbox.Group
-                            className="flex-col items-baseline mt-5"
-                            onChange={handleDisplaySettingsChange}
-                            value={Object.keys(displaySettings).filter(key => displaySettings[key])}
-                            options={[
-                                { label: 'Collapsed', value: 'collapsed' },
-                                { label: 'Enable Copy', value: 'enableClipboard' },
-                                { label: 'Display Object Size', value: 'displayObjectSize' },
-                                { label: 'Display Data Types', value: 'displayDataTypes' },
-                                { label: 'Sort Keys', value: 'sortKeys' },
-                                { label: 'Quotes on Keys', value: 'quotesOnKeys' },
-                            ]}
-                        />
-                        <Button
-                            type="primary"
-                            onClick={convertcsvStringToJSON}
-                            className='text-white hover:bg-gray-100 font-bold mt-4 bg-blue-600'
-                        >
-                            Convert to JSON
-                        </Button>
-                    </div>
-
-                    <div className="col-span-2 overflow-scroll">
-                        {jsonOutput &&
-                            <Card className='shadow-lg border-2 border-gray-200' >
-                                <div className='flex justify-between'>
-                                    <h2 className="text-2xl mb-4">JSON</h2>
+                            </>
+                        )
+                    }
+                    <div
+                        className={`w-full col-span-2 ${fullScreen ? 'fixed top-0 left-0 w-full h-full bg-white z-50 p-10' : ''}`}
+                    >
+                        <Card className='shadow-lg border-2 border-gray-200' >
+                            <div className='flex justify-between'>
+                                <h2 className="text-2xl mb-4">JSON</h2>
+                                <div>
                                     <Button
                                         type="default"
                                         className='text-gray-500 hover:bg-gray-100 font-bold ml-4'
@@ -239,27 +251,34 @@ export default function CSVToJSON() {
                                     >
                                         Download
                                     </Button>
+                                    <Button
+                                        type="default"
+                                        className='text-gray-500 hover:bg-gray-100 font-bold ml-2'
+                                        onClick={() => setFullScreen(!fullScreen)}
+                                        icon={fullScreen ? <CloseOutlined /> : <ExpandOutlined />}
+                                    />
                                 </div>
-                                <hr className='mb-4' />
-                                <ReactJson
-                                    src={jsonOutput}
-                                    collapsed={displaySettings.collapsed}
-                                    enableClipboard={displaySettings.enableClipboard}
-                                    displayObjectSize={displaySettings.displayObjectSize}
-                                    displayDataTypes={displaySettings.displayDataTypes}
-                                    sortKeys={displaySettings.sortKeys}
-                                    quotesOnKeys={displaySettings.quotesOnKeys}
-                                    collapseStringsAfterLength={displaySettings.collapseStringsAfterLength}
-                                    style={{
-                                        overflow: 'scroll',
-                                        maxHeight: '600px',
-                                    }}
-                                    iconStyle='triangle'
-                                    name={false}
-                                />
+                            </div>
+                            <hr className='mb-4' />
+                            <ReactJson
+                                src={jsonOutput || {}}
+                                collapsed={displaySettings.collapsed}
+                                enableClipboard={displaySettings.enableClipboard}
+                                displayObjectSize={displaySettings.displayObjectSize}
+                                displayDataTypes={displaySettings.displayDataTypes}
+                                sortKeys={displaySettings.sortKeys}
+                                quotesOnKeys={displaySettings.quotesOnKeys}
+                                collapseStringsAfterLength={displaySettings.collapseStringsAfterLength}
+                                style={{
+                                    overflow: 'scroll',
+                                    maxHeight: '600px',
+                                }}
+                                iconStyle='triangle'
+                                name={false}
+                            />
 
-                            </Card>
-                        }
+                        </Card>
+
                     </div>
                 </div>
             </div>
