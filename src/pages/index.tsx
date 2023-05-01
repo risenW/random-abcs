@@ -35,7 +35,7 @@ export default function Home() {
             <Card
               hoverable
               cover={<img
-                src="/random-grp.svg"
+                src="/random-text.svg"
                 alt='Random Text'
                 style={{ height: 200 }}
               />
