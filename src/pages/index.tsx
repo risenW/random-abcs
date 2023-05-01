@@ -31,6 +31,24 @@ export default function Home() {
             </Card>
           </Link>
 
+          <Link href={"/random-text"} >
+            <Card
+              hoverable
+              cover={<img
+                src="/random-grp.svg"
+                alt='Random Text'
+                style={{ height: 200 }}
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="Random Text"
+                description="Generate random text. e.g. Lorem Ipsum."
+              />
+            </Card>
+          </Link>
+
           <Link href={"/random-number"}>
             <Card
               hoverable
