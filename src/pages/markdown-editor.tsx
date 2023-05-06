@@ -19,9 +19,73 @@ import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
 import { saveAs } from 'file-saver'
 
+const sampleMarkdown = `
+Start typing here ...
+---
+
+# Hey There!
+This is a free online markdown editor. It allows you to write markdown and export it to various formats. 
+## Features
+   - Download as .md or .html
+   - Fullscreen mode
+   - Export as HTML
+   - Export as Markdown
+   - Syntax highlighting
+   - Live preview
+
+   You can also use the following markdown syntax:
+
+   - **Bold**
+   - *Italic*
+   - Code blocks
+\`\`\`
+This is a code block
+\`\`\`
+
+- [A Link to random-abcs](https://randomabcs.com)
+- ![Image](some-image-url)
+- # Heading 1
+- ## Heading 2
+- ### Heading 3
+- #### Heading 4
+- ##### Heading 5
+- ###### Heading 6
+- > Blockquote
+- List item 1
+- - List item 2
+- - List item 3
+   - 1. List item 1
+   - 2. List item 2
+   - 3. List item 3
+ - ---
+ - Horizontal rule
+- \`Inline code\`
+
+\`\`\`
+// Code block
+const greeting = 'Hello World!';
+console.log(greeting);
+\`\`\`
+
+A Table 
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+- [x] Task 1
+- [x] Task 2
+- [ ] Task 3
+
+- ---
+### Support
+- If you like this tool, please share it with your friends!
+- If you have any suggestions or feedback [use this form](https://forms.gle/DkPNQwgvWS1Ffxct5)
+`
 
 export default function JSONFormatter() {
-    const [markdownInput, setmarkdownInput] = useState("");
+    const [markdownInput, setmarkdownInput] = useState(sampleMarkdown);
     const [fullScreen, setFullScreen] = useState(false);
     const [mdInHtml, setMdInHtml] = useState<any>(null)
 
@@ -84,7 +148,7 @@ export default function JSONFormatter() {
                 <div className={`grid grid-cols-2 ${fullScreen ? 'fixed top-0 left-0 w-full h-full bg-white z-50 p-10 overflow-scroll' : ''}`}>
                     <Card className='shadow-sm border-2 border-gray-200'>
                         <div>
-                            <h2 className="text-2xl mb-4">Markdown</h2>
+                            <h2 className="text-2xl mb-4">Raw Markdown</h2>
                             <hr className='mb-4' />
                         </div>
                         <Input.TextArea

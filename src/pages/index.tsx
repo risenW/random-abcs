@@ -11,6 +11,80 @@ export default function Home() {
   return (
     <BaseLayout title='Random - ABCs - Generate random numbers, colors, names, countries, and more'>
       <div className=''>
+      </div>
+      <div>
+        <h1 className='text-xl font-bold mb-5 mt-5'>Utilities</h1>
+        <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16'>
+          <Link href={"/json-formatter"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/json-file.svg"
+                alt='JSON Formatter'
+                style={{ height: 200 }}
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="JSON Formatter"
+                description="Load, parse, format, and beautify JSON data."
+              />
+            </Card>
+          </Link>
+          <Link href={"/json-to-csv"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/jsontocsv.png"
+                alt='JSON to CSV'
+                style={{ height: 200, width: 260 }}
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="JSON to CSV"
+                description="Load, parse and convert JSON data to CSV format."
+              />
+            </Card>
+          </Link>
+          <Link href={"/csv-to-json"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/csvtojson.png"
+                style={{ height: 200, width: 260 }}
+                alt='CSV to JSON'
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="CSV to JSON"
+                description="Load, parse and convert CSV data to JSON format."
+              />
+            </Card>
+          </Link>
+          <Link href={"/markdown-editor"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/edit.svg"
+                style={{ height: 220, width: 260 }}
+                alt='Markdown Editor'
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="Markdown Editor"
+                description="Write and preview markdown online."
+              />
+            </Card>
+          </Link>
+        </div>
+
         <h1 className='text-xl font-bold mb-5'>Random Generators</h1>
         <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           <Link href={"/random-group"} >
@@ -135,80 +209,7 @@ export default function Home() {
             </Card>
           </Link>
 
-        </div>
-        <hr className='my-10' />
-        <div>
-          <h1 className='text-xl font-bold mb-5 mt-10'>Utilities</h1>
-          <div className='grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-            <Link href={"/json-formatter"}>
-              <Card
-                hoverable
-                cover={<img
-                  src="/json-file.svg"
-                  alt='JSON Formatter'
-                  style={{ height: 200 }}
-                />
-                }
-                className='cursor-pointer'
-              >
-                <Meta
-                  title="JSON Formatter"
-                  description="Load, parse, format, and beautify JSON data."
-                />
-              </Card>
-            </Link>
-            <Link href={"/json-to-csv"}>
-              <Card
-                hoverable
-                cover={<img
-                  src="/jsontocsv.png"
-                  alt='JSON to CSV'
-                  style={{ height: 200, width: 260 }}
-                />
-                }
-                className='cursor-pointer'
-              >
-                <Meta
-                  title="JSON to CSV"
-                  description="Load, parse and convert JSON data to CSV format."
-                />
-              </Card>
-            </Link>
-            <Link href={"/csv-to-json"}>
-              <Card
-                hoverable
-                cover={<img
-                  src="/csvtojson.png"
-                  style={{ height: 200, width: 260 }}
-                  alt='CSV to JSON'
-                />
-                }
-                className='cursor-pointer'
-              >
-                <Meta
-                  title="CSV to JSON"
-                  description="Load, parse and convert CSV data to JSON format."
-                />
-              </Card>
-            </Link>
-            <Link href={"/markdown-editor"}>
-              <Card
-                hoverable
-                cover={<img
-                  src="/markdown-editor.png"
-                  style={{ height: 200, width: 260 }}
-                  alt='Markdown Editor'
-                />
-                }
-                className='cursor-pointer'
-              >
-                <Meta
-                  title="Markdown Editor"
-                  description="Write and preview markdown online."
-                />
-              </Card>
-            </Link>
-          </div>
+
         </div>
 
       </div>
