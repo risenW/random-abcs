@@ -141,7 +141,7 @@ export default function JSONFormatter() {
     ];
 
     return (
-        <BaseLayout title="JSON Formatter">
+        <BaseLayout title="Markdown Editor/Viewer - Random ABCs Tools | Free Online Markdonw editor">
             <div>
                 <h1 className="text-2xl mb-4 text-center">Markdown Editor</h1>
                 <hr className="mb-4" />

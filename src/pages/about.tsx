@@ -19,7 +19,7 @@ export default function About() {
                             - Random generators for numbers, colors, names, countries, texts, groups, etc.
                         </p>
                         <p>
-                            - Utilities for loading, parsing, and manipulating data structures like JSON, CSV, e.g. JSON-to-CSV, CSV-to-JSON, JSON viewer etc.
+                            - Utilities for loading, parsing, and manipulating data structures like JSON, CSV, e.g. JSON-to-CSV, CSV-to-JSON, JSON viewer, Markdown editor/viewer etc.
                         </p>
                     </div>
                     <div className="mt-2">
