@@ -5,9 +5,7 @@ import { Card } from 'antd';
 import Image from 'next/image';
 const { Meta } = Card;
 
-
 export default function Home() {
-
   return (
     <BaseLayout title='Random - ABCs - Generate random numbers, colors, names, countries, and more'>
       <div className=''>
@@ -22,8 +20,7 @@ export default function Home() {
                 src="/json-file.svg"
                 alt='JSON Formatter'
                 style={{ height: 200 }}
-              />
-              }
+              />}
               className='cursor-pointer'
             >
               <Meta
@@ -39,8 +36,7 @@ export default function Home() {
                 src="/jsontocsv.png"
                 alt='JSON to CSV'
                 style={{ height: 200, width: 260 }}
-              />
-              }
+              />}
               className='cursor-pointer'
             >
               <Meta
@@ -56,8 +52,7 @@ export default function Home() {
                 src="/csvtojson.png"
                 style={{ height: 200, width: 260 }}
                 alt='CSV to JSON'
-              />
-              }
+              />}
               className='cursor-pointer'
             >
               <Meta
@@ -71,15 +66,65 @@ export default function Home() {
               hoverable
               cover={<img
                 src="/edit.svg"
-                style={{ height: 220, width: 260 }}
+                style={{ height: 200, width: 260 }}
                 alt='Markdown Editor'
-              />
-              }
+              />}
               className='cursor-pointer'
             >
               <Meta
                 title="Markdown Editor"
                 description="Write and preview markdown online."
+              />
+            </Card>
+          </Link>
+
+          <Link href={"/base64"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/base64.png"
+                alt='Base64'
+                style={{ height: 200 }}
+              />}
+              className='cursor-pointer'
+            >
+              <Meta
+                title="Base64 Encoder/Decoder"
+                description="Encode and decode data using Base64."
+              />
+            </Card>
+          </Link>
+
+          <Link href={"/cloud-code"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/cloud-code.png"
+                alt='Cloud Code'
+                style={{ height: 220, width: 260 }}
+              />}
+              className='cursor-pointer'
+            >
+              <Meta
+                title="Cloud Code"
+                description="Run code snippets in the cloud."
+              />
+            </Card>
+          </Link>
+
+          <Link href={"/json-validator"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/jsonv.png"
+                alt='JSON Validator'
+                style={{ height: 220, }}
+              />}
+              className='cursor-pointer'
+            >
+              <Meta
+                title="JSON Validator"
+                description="Validate and format JSON data."
               />
             </Card>
           </Link>
