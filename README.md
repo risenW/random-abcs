@@ -10,30 +10,19 @@ It is a collection of tools that I use in my daily work. I hope you find it usef
 
 ## Available tools
 ### Utilities
-#### JSON Formatter
-Load, parse, format, and beautify JSON data.
-#### JSON to CSV
-Load, parse and convert JSON data to CSV format.
-#### CSV to JSON
-Load, parse and convert CSV data to JSON format.
-#### Markdown Editor
-Write and preview markdown online.
+* __JSON Formatter__: Load, parse, format, and beautify JSON data.
+* __JSON to CSV__ : Load, parse and convert JSON data to CSV format.
+* __CSV to JSON__ : Load, parse and convert CSV data to JSON format.
+* __Markdown Editor__ : Write and preview markdown online.
 
 ### Random Generators
-#### Random Group
-Randomly group a list of items. e.g. Group students into teams.
-#### Random Text
-Generate random text. e.g. Lorem Ipsum.
-#### Random Number
-Generate a random number between two numbers.
-#### Throw Dice
-Throw a dice and get a number between 1 and 6.
-#### Random Color
-Generate a random color in HEX and RGB format.
-#### Flip Coin
-Flip a coin and get heads or tails.
-#### Random Countries
-Generate a random country name.
+* __Random Group__ : Randomly group a list of items. e.g. Group students into teams.
+* __Random Text__ : Generate random text. e.g. Lorem Ipsum.
+* __Random Number__ : Generate a random number between two numbers.
+* __Throw Dice__ : Throw a dice and get a number between 1 and 6.
+* __Random Color__ : Generate a random color in HEX and RGB format.
+* __Flip Coin__ : Flip a coin and get heads or tails.
+* __Random Countries__ : Generate a random country name.
 
 ## Development
 Random-ABCs is built with [Next.js](https://nextjs.org/), [Ant Design](https://ant.design/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/).
