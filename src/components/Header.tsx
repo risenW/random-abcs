@@ -29,10 +29,10 @@ export default function Header() {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <Link href="https://forms.gle/DkPNQwgvWS1Ffxct5" className="text-sm font-semibold leading-6 text-gray-900"
+                    <Link href="https://github.com/risenW/random-abcs" className="text-sm font-semibold leading-6 text-gray-900"
                         target='_blank'
                     >
-                        Suggest a feature
+                        Contribute
                     </Link>
                     {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                         Roadmap
