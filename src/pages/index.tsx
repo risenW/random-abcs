@@ -84,47 +84,13 @@ export default function Home() {
               cover={<img
                 src="/base64.png"
                 alt='Base64'
-                style={{ height: 200 }}
+                style={{ height: 100, width: 100 }}
               />}
               className='cursor-pointer'
             >
               <Meta
                 title="Base64 Encoder/Decoder"
                 description="Encode and decode data using Base64."
-              />
-            </Card>
-          </Link>
-
-          <Link href={"/cloud-code"}>
-            <Card
-              hoverable
-              cover={<img
-                src="/cloud-code.png"
-                alt='Cloud Code'
-                style={{ height: 220, width: 260 }}
-              />}
-              className='cursor-pointer'
-            >
-              <Meta
-                title="Cloud Code"
-                description="Run code snippets in the cloud."
-              />
-            </Card>
-          </Link>
-
-          <Link href={"/json-validator"}>
-            <Card
-              hoverable
-              cover={<img
-                src="/jsonv.png"
-                alt='JSON Validator'
-                style={{ height: 220, }}
-              />}
-              className='cursor-pointer'
-            >
-              <Meta
-                title="JSON Validator"
-                description="Validate and format JSON data."
               />
             </Card>
           </Link>
