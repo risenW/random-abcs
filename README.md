@@ -1,38 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Random-ABCs is a collection of:
 
-## Getting Started
+- Random generators for numbers, colors, names, countries, texts, groups, etc.
 
-First, run the development server:
+- Utilities for loading, parsing, and manipulating data structures like JSON, CSV, e.g. JSON-to-CSV, CSV-to-JSON, JSON viewer, Markdown editor/viewer etc.
 
+It is a collection of tools that I use in my daily work. I hope you find it useful too.
+
+> Try it online: https://randomabcs.com
+
+## Available tools
+### Utilities
+* __JSON Formatter__: Load, parse, format, and beautify JSON data.
+* __JSON to CSV__ : Load, parse and convert JSON data to CSV format.
+* __CSV to JSON__ : Load, parse and convert CSV data to JSON format.
+* __Markdown Editor__ : Write and preview markdown online.
+
+### Random Generators
+* __Random Group__ : Randomly group a list of items. e.g. Group students into teams.
+* __Random Text__ : Generate random text. e.g. Lorem Ipsum.
+* __Random Number__ : Generate a random number between two numbers.
+* __Throw Dice__ : Throw a dice and get a number between 1 and 6.
+* __Random Color__ : Generate a random color in HEX and RGB format.
+* __Flip Coin__ : Flip a coin and get heads or tails.
+* __Random Countries__ : Generate a random country name.
+
+## Development
+Random-ABCs is built with [Next.js](https://nextjs.org/), [Ant Design](https://ant.design/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/).
+
+### Run locally
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/risenW/random-abcs.git
 ```
+cd into the directory
+```bash
+cd random-abcs
+```
+Install dependencies
+```bash
+yarn install
+```
+Run the development server
+```bash
+yarn dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Contributing
+Pull requests are welcome. For major changes or new features, please open an issue first to discuss what you would like to change or add.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
