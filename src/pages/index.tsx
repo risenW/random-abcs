@@ -83,6 +83,23 @@ export default function Home() {
               />
             </Card>
           </Link>
+          <Link href={"/base-64"}>
+            <Card
+              hoverable
+              cover={<img
+                src="/base64.png"
+                style={{ height: 210, width: 190 }}
+                alt='Base 64 converter'
+              />
+              }
+              className='cursor-pointer'
+            >
+              <Meta
+                title="Base64 Encoder/Decoder"
+                description="Encode binary data as printable text."
+              />
+            </Card>
+          </Link>
         </div>
 
         <h1 className='text-xl font-bold mb-5'>Random Generators</h1>
