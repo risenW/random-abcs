@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import BaseLayout from '../components/Layout';
 import { Card } from 'antd';
-import Image from 'next/image';
 const { Meta } = Card;
 
 export default function Home() {
