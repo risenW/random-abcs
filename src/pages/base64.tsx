@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { 
+  Button, 
+  Input, 
+  Checkbox, 
+  Card } from 'antd';
 import BaseLayout from '@/components/Layout';
 
-export default function Base64() {
+  export default function Base64() {
   const [inputText, setInputText] = useState('');
   const [encodedText, setEncodedText] = useState('');
   const [decodedText, setDecodedText] = useState('');
@@ -18,11 +23,11 @@ export default function Base64() {
     setDecodedText(decoded);
   };
 
-  const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
 
-  const handleSourceCharacterSetChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleSourceCharacterSetChange = (e) => {
     setSourceCharacterSet(e.target.value);
   };
 
@@ -30,121 +35,161 @@ export default function Base64() {
     setDecodeEachLine((prevValue) => !prevValue);
   };
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target.result;
+      setInputText( content );
+    };
+    reader.readAsText(file);
+  };
+
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([inputText], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `base64-input.txt`;
+    document.body.appendChild(element);
+    element.click();
+  };
+
+  const handleFileDecode = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target.result;
+      setEncodedText(content);
+      handleDecode();
+    };
+    reader.readAsText(file);
+  };
+
   return (
-    <BaseLayout title="Base Tool">
-    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <h1 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px' }}>
-        Base64 Encoder/Decoder
-      </h1>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <textarea
-            style={{ width: '100%', minHeight: '100px', padding: '10px', resize: 'vertical' }}
-            placeholder="Enter your text..."
-            value={inputText}
-            onChange={handleInputChange}
-          />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <label htmlFor="sourceCharacterSet">Source character set:</label>
-            <select
-              id="sourceCharacterSet"
-              value={sourceCharacterSet}
-              onChange={handleSourceCharacterSetChange}
-            >
-              <option value="UTF-8">UTF-8</option>
-              <option value="ASCII">ASCII</option>
-              <option value="ISO-8859-1">ISO-8859-1</option>
-              <option value="ISO-8859-2">ISO-8859-2</option>
-              <option value="Shift_JIS">Shift_JIS</option>
-              <option value="EUC-JP">EUC-JP</option>
-              <option value="ISO-2022-JP">ISO-2022-JP</option>
-              <option value="ISO-8859-5">ISO-8859-5</option>
-              <option value="KOI8-R">KOI8-R</option>
-              {/* Add more character sets here */}
-            </select>
-            <label htmlFor="decodeEachLine">
-              <input
+    <BaseLayout title="Base64 Tool">
+      <div>
+        <h1 className="text-2xl mb-4 text-center">Base64 Encoder/Decoder</h1>
+        <hr className="mb-4" />
+        <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+          <Card className="shadow-sm border-2 border-gray-200 lg:col-span-2">
+            <div>
+              <h2 className="text-2xl mb-4">Raw Text</h2>
+              <hr className="mb-4" />
+            </div>
+            <Input.TextArea
+              rows={10}
+              value={inputText}
+              onChange={handleInputChange}
+              placeholder="Enter your text..."
+              className="pt-4"
+              bordered={false}
+            />
+          </Card>
+
+          <div className="flex flex-col">
+            <h2 className="text-lg mt-10 font-semibold">Display Settings</h2>
+            <div className="mt-5">
+              <label htmlFor="sourceCharacterSet" className="text-base font-medium">
+                Source character set:
+              </label>
+              <select
+                id="sourceCharacterSet"
+                value={sourceCharacterSet}
+                onChange={handleSourceCharacterSetChange}
+                className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              >
+                <option value="UTF-8">UTF-8</option>
+                <option value="ASCII">ASCII</option>
+                <option value="ISO-8859-1">ISO-8859-1</option>
+                <option value="ISO-8859-2">ISO-8859-2</option>
+                <option value="Shift_JIS">Shift_JIS</option>
+                <option value="EUC-JP">EUC-JP</option>
+                <option value="ISO-2022-JP">ISO-2022-JP</option>
+                <option value="ISO-8859-5">ISO-8859-5</option>
+                <option value="KOI8-R">KOI8-R</option>
+              </select>
+            </div>
+            <div className="mt-3">
+              <Checkbox
                 id="decodeEachLine"
-                type="checkbox"
                 checked={decodeEachLine}
                 onChange={handleDecodeEachLineChange}
-              />
-              Decode each line separately
-            </label>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-            <button
-              style={{
-                padding: '10px 20px',
-                backgroundColor: 'green',
-                color: 'white',
-                border: 'none',
-                cursor: 'pointer',
-              }}
+              >
+                Decode each line separately
+              </Checkbox>
+            </div>
+            <Button
+              type="primary"
               onClick={handleEncode}
+              className="text-white hover:bg-gray-100 font-bold mt-4 bg-blue-600"
             >
               Encode
-            </button>
-            <button
-              style={{
-                padding: '10px 20px',
-                backgroundColor: 'green',
-                color: 'white',
-                border: 'none',
-                cursor: 'pointer',
-              }}
+            </Button>
+            <Button
+              type="primary"
               onClick={handleDecode}
+              className="text-white hover:bg-gray-100 font-bold mt-2 bg-blue-600"
             >
               Decode
-            </button>
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ flex: 1 }}>
-            <h3 style={{ marginBottom: '10px' }}>Encoded Text:</h3>
-            <textarea
-              style={{ width: '100%', minHeight: '100px', padding: '10px', resize: 'vertical' }}
-              value={encodedText}
-              readOnly
+            </Button>
+            <div className="mt-4">
+              <label htmlFor="fileUpload" className="text-base font-medium">
+                Upload file:
+              </label>
+              <input
+                type="file"
+                id="fileUpload"
+                accept=".txt"
+                onChange={handleFileUpload}
+                className="mt-2 block"
+              />
+            </div>
+  
+            <div style={{ marginTop: '40px' }}>
+            <h3 className="font-bold text-left">Decode files from Base64 format</h3>
+            <input
+              type="file"
+              accept="image/*, .pdf, .doc, .docx"
+              onChange={handleFileDecode}
+              className="mt-2"
             />
+            <p className="italic">The maximum file size is 192MB.</p>
           </div>
-          <div style={{ flex: 1, marginLeft: '20px' }}>
-            <h3 style={{ marginBottom: '10px' }}>Decoded Text:</h3>
-            <textarea
-              style={{ width: '100%', minHeight: '100px', padding: '10px', resize: 'vertical' }}
-              value={decodedText}
-              readOnly
-            />
+          </div>
+
+          <div className="w-full col-span-2">
+            <Card className="shadow-lg border-2 border-gray-200">
+              <div>
+                <h2 className="text-2xl mb-4">Encoded/Decoded Text</h2>
+                <hr className="mb-4" />
+              </div>
+              <div className="flex justify-between">
+                <div className="w-1/2 pr-2">
+                  <h3 className="text-lg mb-2">Encoded Text:</h3>
+                  <Input.TextArea
+                    rows={10}
+                    value={encodedText}
+                    placeholder='Results goes here...'
+                    readOnly
+                    className="resize-vertical"
+                  />
+                </div>
+                <div className="w-1/2 pl-2">
+                  <h3 className="text-lg mb-2">Decoded Text:</h3>
+                  <Input.TextArea
+                    rows={10}
+                    value={decodedText}
+                    placeholder='Results goes here...'
+                    readOnly
+                    className="resize-vertical"
+                  />
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
-      <div style={{ marginTop: '40px', textAlign: 'center' }}>
-        <h3>Decode files from Base64 format</h3>
-        <input type="file" accept="image/*, .pdf, .doc, .docx" />
-        <p>The maximum file size is 192MB.</p>
-        <p>Do not execute decoded files originated from untrusted sources.</p>
-        <label htmlFor="decodeEachLineFiles">
-          <input
-            id="decodeEachLineFiles"
-            type="checkbox"
-            checked={decodeEachLine}
-            onChange={handleDecodeEachLineChange}
-          />
-          Decode each line separately (useful for when you have multiple entries)
-        </label>
-        <button
-          style={{
-            padding: '10px 20px',
-            backgroundColor: 'green',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-          }}
-        >
-          DECODE
-        </button>
-      </div>
-    </div>
     </BaseLayout>
   );
 }
+
