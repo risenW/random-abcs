@@ -46,6 +46,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.1"
+  },
+  "resolutions": {
+    "acorn": "8.8.2"
   }
 }
