@@ -83,8 +83,8 @@ export default function Home() {
               hoverable
               cover={<img
                 src="/base64.png"
+                style={{ height: 150, width: 150 }}
                 alt='Base64'
-                style={{ height: 100, width: 100 }}
               />}
               className='cursor-pointer'
             >

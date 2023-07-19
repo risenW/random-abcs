@@ -192,4 +192,3 @@ import BaseLayout from '@/components/Layout';
     </BaseLayout>
   );
 }
-
